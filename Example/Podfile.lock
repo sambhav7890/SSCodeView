@@ -1,0 +1,22 @@
+PODS:
+  - Nimble (5.1.1)
+  - Quick (1.0.0)
+  - SSCodeView (0.1.0)
+
+DEPENDENCIES:
+  - Nimble (~> 5.1.1)
+  - Quick (~> 1.0.0)
+  - SSCodeView (from `../`)
+
+EXTERNAL SOURCES:
+  SSCodeView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  SSCodeView: 7bbc0a554b47e95cd14fae255d0b1a95514384c4
+
+PODFILE CHECKSUM: b686a626adf4004b4dfd81e67c7818ec1300aa0f
+
+COCOAPODS: 1.2.0

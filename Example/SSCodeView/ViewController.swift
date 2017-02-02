@@ -5,20 +5,40 @@
 //  Created by sambhav7890 on 02/02/2017.
 //  Copyright (c) 2017 sambhav7890. All rights reserved.
 //
-
 import UIKit
+import SSCodeView
 
-class ViewController: UIViewController {
+class VerificationCodeViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+	// MARK: - IBOutlets
+	@IBOutlet weak var verificationCodeView: SSCodeView!
+	@IBOutlet weak var submitButton: UIButton!
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	// MARK: - Lifecycle
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
+		submitButton.isEnabled = false
+		verificationCodeView.delegate = self
+	}
+
+	// MARK: - IBAction
+	@IBAction func submitButtonTapped(_ sender: UIButton) {
+		if verificationCodeView.hasValidCode() {
+			let alertController = UIAlertController(title: "Success", message: "Code is \(verificationCodeView.getVerificationCode())", preferredStyle: .alert)
+			let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+			alertController.addAction(okAction)
+			present(alertController, animated: true, completion: nil)
+
+			verificationCodeView.totalDigitCount = verificationCodeView.totalDigitCount == 6 ? 4 : 6
+			
+		}
+	}
 }
 
+// MARK: - SSCodeViewDelegate
+extension VerificationCodeViewController: SSCodeViewDelegate {
+	func didChangeVerificationCode() {
+		submitButton.isEnabled = verificationCodeView.hasValidCode()
+	}
+}

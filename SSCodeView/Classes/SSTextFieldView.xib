@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SSTextFieldView" customModule="SSCodeView" customModuleProvider="target">
+            <connections>
+                <outlet property="numberTextField" destination="uky-3e-m7A" id="Ogl-UJ-h2a"/>
+                <outlet property="underlineView" destination="eC6-EU-k8d" id="qc7-Kb-F7X"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="2" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uky-3e-m7A" userLabel="numberTextField">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="uky-3e-m7A" secondAttribute="height" multiplier="1:1" priority="700" id="NTp-yU-Gub"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eC6-EU-k8d" userLabel="underlineView">
+                    <rect key="frame" x="0.0" y="39.5" width="50" height="1"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="pFW-zo-tEa"/>
+                    </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3SF-7T-DPH">
+                    <rect key="frame" x="0.0" y="40.5" width="50" height="9.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3SF-7T-DPH" secondAttribute="trailing" id="5Wt-xZ-nrR"/>
+                <constraint firstAttribute="trailing" secondItem="uky-3e-m7A" secondAttribute="trailing" id="MuM-of-Epd"/>
+                <constraint firstAttribute="trailing" secondItem="eC6-EU-k8d" secondAttribute="trailing" id="Odf-u4-Ape"/>
+                <constraint firstItem="uky-3e-m7A" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oed-YU-zSh"/>
+                <constraint firstAttribute="bottom" secondItem="uky-3e-m7A" secondAttribute="bottom" id="Pqg-by-NSd"/>
+                <constraint firstItem="eC6-EU-k8d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eN7-g5-fd7"/>
+                <constraint firstItem="3SF-7T-DPH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gGA-0T-idb"/>
+                <constraint firstAttribute="bottom" secondItem="3SF-7T-DPH" secondAttribute="bottom" id="hSx-GA-oYj"/>
+                <constraint firstItem="3SF-7T-DPH" firstAttribute="top" secondItem="eC6-EU-k8d" secondAttribute="bottom" id="mwU-sZ-fvY"/>
+                <constraint firstItem="3SF-7T-DPH" firstAttribute="height" secondItem="uky-3e-m7A" secondAttribute="height" multiplier="0.2" id="wLE-OK-RrF"/>
+                <constraint firstItem="uky-3e-m7A" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zym-UT-7Yd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

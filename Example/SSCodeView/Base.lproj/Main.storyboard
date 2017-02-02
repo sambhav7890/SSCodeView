@@ -1,25 +1,112 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WS4-oa-ovI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Verification Code View Controller-->
+        <scene sceneID="p5F-Sp-nnu">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="verificationCodeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WS4-oa-ovI" customClass="VerificationCodeViewController" customModule="SSCodeView_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="NNo-wd-Bzg"/>
+                        <viewControllerLayoutGuide type="bottom" id="N19-AU-JgQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="lt7-ix-SJm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6v-TD-TM4" userLabel="verificationCodeView" customClass="SSCodeView" customModule="SSCodeView">
+                                <rect key="frame" x="36" y="308.5" width="303" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="H4e-nC-ceP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
+                                        <color key="value" red="0.99215686270000003" green="0.73563590570000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="underlineSelectedColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textFieldBackgroundColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textFieldTintColor">
+                                        <color key="value" red="1" green="0.39215686274509803" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1y-KS-hh8" userLabel="submitButton">
+                                <rect key="frame" x="0.5" y="380.5" width="375" height="58"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.64119072050000003" green="0.0" blue="0.72715297970000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButtonTapped:" destination="WS4-oa-ovI" eventType="touchUpInside" id="chf-iC-vXM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZQ-Xf-yo6" userLabel="titleLabel">
+                                <rect key="frame" x="16" y="234.5" width="343" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="345-TY-1CL" userLabel="promptLabel">
+                                <rect key="frame" x="156" y="268.5" width="63" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gZQ-Xf-yo6" secondAttribute="trailing" constant="16" id="1WO-2z-ddm"/>
+                            <constraint firstItem="L6v-TD-TM4" firstAttribute="leading" secondItem="lt7-ix-SJm" secondAttribute="leadingMargin" constant="20" id="6zg-uH-ofD"/>
+                            <constraint firstItem="y1y-KS-hh8" firstAttribute="width" secondItem="lt7-ix-SJm" secondAttribute="width" id="JNU-1Q-zLu"/>
+                            <constraint firstItem="L6v-TD-TM4" firstAttribute="centerY" secondItem="lt7-ix-SJm" secondAttribute="centerY" id="QQZ-qd-fAT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L6v-TD-TM4" secondAttribute="trailing" constant="20" id="QUo-Rg-RsD"/>
+                            <constraint firstItem="345-TY-1CL" firstAttribute="centerX" secondItem="lt7-ix-SJm" secondAttribute="centerX" id="Rgn-y1-fcc"/>
+                            <constraint firstItem="gZQ-Xf-yo6" firstAttribute="leading" secondItem="lt7-ix-SJm" secondAttribute="leading" constant="16" id="YgR-Le-7ch"/>
+                            <constraint firstItem="y1y-KS-hh8" firstAttribute="centerX" secondItem="lt7-ix-SJm" secondAttribute="centerX" id="dvk-hI-46P"/>
+                            <constraint firstItem="L6v-TD-TM4" firstAttribute="top" secondItem="gZQ-Xf-yo6" secondAttribute="bottom" constant="50" id="lqZ-nS-Dhd"/>
+                            <constraint firstItem="y1y-KS-hh8" firstAttribute="top" secondItem="L6v-TD-TM4" secondAttribute="bottom" constant="22" id="yoh-v6-2n2"/>
+                            <constraint firstItem="L6v-TD-TM4" firstAttribute="top" secondItem="345-TY-1CL" secondAttribute="bottom" constant="22" id="zdO-fo-rJO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="submitButton" destination="y1y-KS-hh8" id="a6k-4a-aOC"/>
+                        <outlet property="verificationCodeView" destination="L6v-TD-TM4" id="HGq-dE-gpR"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ybo-dh-127" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-524" y="99"/>
         </scene>
     </scenes>
 </document>
