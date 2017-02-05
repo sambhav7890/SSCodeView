@@ -24,8 +24,8 @@ class VerificationCodeViewController: UIViewController {
 
 	// MARK: - IBAction
 	@IBAction func submitButtonTapped(_ sender: UIButton) {
-		if verificationCodeView.hasValidCode() {
-			let alertController = UIAlertController(title: "Success", message: "Code is \(verificationCodeView.getVerificationCode())", preferredStyle: .alert)
+		if verificationCodeView.isValid() {
+			let alertController = UIAlertController(title: "Success", message: "Code is \(verificationCodeView.getCode())", preferredStyle: .alert)
 			let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
 			alertController.addAction(okAction)
 			present(alertController, animated: true, completion: nil)
@@ -39,6 +39,6 @@ class VerificationCodeViewController: UIViewController {
 // MARK: - SSCodeViewDelegate
 extension VerificationCodeViewController: SSCodeViewDelegate {
 	func didChangeVerificationCode() {
-		submitButton.isEnabled = verificationCodeView.hasValidCode()
+		submitButton.isEnabled = verificationCodeView.isValid()
 	}
 }

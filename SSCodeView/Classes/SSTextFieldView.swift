@@ -145,14 +145,17 @@ protocol SSTextFieldDelegate: class {
 // MARK: - UITextFieldDelegate
 extension SSTextFieldView: UITextFieldDelegate {
 	public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		let currentString = numberTextField.text!
-		let newString = currentString.replacingCharacters(in: textField.text!.range(from: range)!, with: string)
+
+		let currentString = textField.text ?? " "
+
+		guard let newRange = currentString.range(from: range) else { return false }
+		let newString = currentString.replacingCharacters(in: newRange, with: string)
 
 		if newString.characters.count > self.maxCharactersLength {
 			delegate?.moveToNext(self)
 			textField.text = string
 		} else if newString.characters.count == 0 {
-			delegate?.moveToPrevious(self, oldCode: textField.text!)
+			delegate?.moveToPrevious(self, oldCode: currentString)
 			numberTextField.text = " "
 		}
 

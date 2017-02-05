@@ -122,21 +122,19 @@ public protocol SSCodeViewDelegate: class {
 	}
 
 	// MARK: - Public Methods
-	public func getVerificationCode() -> String {
+	public func getCode() -> String {
 		var verificationCode = ""
 		for textFieldView in textFieldViews {
-			verificationCode += textFieldView.numberTextField.text!
+			verificationCode += textFieldView.numberTextField.text ?? ""
 		}
 		return verificationCode
 	}
 
-	public func hasValidCode() -> Bool {
+	public func isValid() -> Bool {
 		for textFieldView in textFieldViews {
-			if Int(textFieldView.numberTextField.text!) == nil {
-				return false
-			}
+			guard let theText = textFieldView.numberTextField.text else { return false }
+			guard let _ = Int(theText) else { return false }
 		}
-
 		return true
 	}
 
@@ -205,8 +203,19 @@ public protocol SSCodeViewDelegate: class {
 // MARK: - SSTextFieldDelegate
 extension SSCodeView: SSTextFieldDelegate {
 	func moveToNext(_ textFieldView: SSTextFieldView) {
-		let validIndex = textFieldViews.index(of: textFieldView) == textFieldViews.count - 1 ? textFieldViews.index(of: textFieldView)! : textFieldViews.index(of: textFieldView)! + 1
-		textFieldViews[validIndex].activate()
+
+		guard let index = textFieldViews.index(of: textFieldView) else { return }
+
+		let activate: ((Array.Index) -> Void)  = { (validIndex) in
+			self.textFieldViews[validIndex].activate()
+		}
+
+		if index == textFieldViews.count - 1 {
+			activate(index)
+		} else {
+			activate(index+1)
+		}
+
 	}
 
 	func moveToPrevious(_ textFieldView: SSTextFieldView, oldCode: String) {
@@ -214,9 +223,19 @@ extension SSCodeView: SSTextFieldDelegate {
 			return
 		}
 
-		let validIndex = textFieldViews.index(of: textFieldView)! == 0 ? 0 : textFieldViews.index(of: textFieldView)! - 1
-		textFieldViews[validIndex].activate()
-		textFieldViews[validIndex].reset()
+		guard let index = textFieldViews.index(of: textFieldView) else { return }
+
+		let resetactivation: ((Array.Index) -> Void)  = { (validIndex) in
+			self.textFieldViews[validIndex].activate()
+			self.textFieldViews[validIndex].reset()
+		}
+
+		if index == 0 {
+			resetactivation(index)
+		} else {
+			resetactivation(index-1)
+		}
+
 	}
 
 	func didChangeCharacters() {
