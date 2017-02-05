@@ -7,6 +7,7 @@
 //
 import UIKit
 import SSCodeView
+import MobileCoreServices
 
 class VerificationCodeViewController: UIViewController {
 
@@ -25,13 +26,26 @@ class VerificationCodeViewController: UIViewController {
 	// MARK: - IBAction
 	@IBAction func submitButtonTapped(_ sender: UIButton) {
 		if verificationCodeView.isValid() {
-			let alertController = UIAlertController(title: "Success", message: "Code is \(verificationCodeView.getCode())", preferredStyle: .alert)
-			let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-			alertController.addAction(okAction)
-			present(alertController, animated: true, completion: nil)
 
-			verificationCodeView.totalDigitCount = verificationCodeView.totalDigitCount == 6 ? 4 : 6
-			
+			let newDigitCount = verificationCodeView.totalDigitCount == 6 ? 4 : 6
+
+			let alertController = UIAlertController(title: "Success", message: "Code is \(verificationCodeView.getCode())", preferredStyle: .alert)
+
+			let okAction = UIAlertAction(title: "Ok, reset to \(newDigitCount) digits", style: .default, handler: { (action) in
+				self.verificationCodeView.totalDigitCount = newDigitCount
+			})
+			alertController.addAction(okAction)
+
+			let copyAction = UIAlertAction(title: "Copy Code", style: .default, handler: { (action) in
+				let pasteboardItem: [String : String] = [String(kUTTypeUTF8PlainText) : self.verificationCodeView.getCode()]
+				UIPasteboard.general.addItems([pasteboardItem])
+			})
+			alertController.addAction(copyAction)
+
+			let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+			alertController.addAction(cancelAction)
+
+			present(alertController, animated: true, completion: nil)
 		}
 	}
 }
