@@ -17,28 +17,17 @@ internal extension UIView {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(view)
 
-		view.constrainToSuperView()
-		return view
-	}
-
-	@discardableResult
-	func constrainToSuperView() -> [NSLayoutConstraint] {
-
-		let views = ["view": self]
+		let views = ["view": view]
 		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: views)
 		let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: views)
 
 		let constraints = horizontalConstraints + verticalConstraints
 		addConstraints(constraints)
 		setNeedsUpdateConstraints()
-		return constraints
+
+
+
+		return view
 	}
 
-	@discardableResult
-	func addEqualHeightConstraint() -> NSLayoutConstraint? {
-		guard let superView = self.superview else { return nil }
-		let constraint = NSLayoutConstraint.init(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: superView, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
-		superView.addConstraint(constraint)
-		return constraint
-	}
 }
